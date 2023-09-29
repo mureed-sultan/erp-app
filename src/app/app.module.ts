@@ -20,7 +20,11 @@ import { VisitorDetailsComponent } from './Pages/visitor-details/visitor-details
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ResponseSendComponent } from './Pages/response-send/response-send.component';
 import { MeetingConfirmComponent } from './Pages/meeting-confirm/meeting-confirm.component';
-
+import { FirebaseComponent } from './Components/firebase/firebase.component';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
 
 
 @NgModule({
@@ -36,7 +40,8 @@ import { MeetingConfirmComponent } from './Pages/meeting-confirm/meeting-confirm
     PendingInviteComponent,
     VisitorDetailsComponent,
     ResponseSendComponent,
-    MeetingConfirmComponent
+    MeetingConfirmComponent,
+    FirebaseComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,19 @@ import { MeetingConfirmComponent } from './Pages/meeting-confirm/meeting-confirm
     MatIconModule,
     FormsModule,
     TagifyModule.forRoot(),
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    provideFirebaseApp(() => initializeApp(
+      {  apiKey: "AIzaSyBRTRiI6t4cCuVGsdLhwixGswLGq24HmjE",
+      authDomain: "erp-app-78e00.firebaseapp.com",
+      projectId: "erp-app-78e00",
+      storageBucket: "erp-app-78e00.appspot.com",
+      messagingSenderId: "1096834700857",
+      appId: "1:1096834700857:web:c51c72316f4b7156529fe8",
+      measurementId: "G-X4N0591RNL" }
+      )),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
   ],
   providers: [],
   bootstrap: [AppComponent]

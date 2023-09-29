@@ -5,12 +5,13 @@
     </div>
     <section class="auth-section">
         <form (submit)="userAuth()">
+          <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
             <div class="input-container">
-                <input type="email" name="username" id="username" placeholder="Username / Email" />
+                <input [(ngModel)]="email" type="email" name="username" id="username" placeholder="Username / Email" />
                 <label class="placeholder" for="username">Username / Email</label>
             </div>
             <div class="input-container">
-                <input type="password" name="password" id="password" placeholder="Password" />
+                <input [(ngModel)]="password" type="password" name="password" id="password" placeholder="Password" />
                 <label class="placeholder" for="username">Password</label>
 
             </div>

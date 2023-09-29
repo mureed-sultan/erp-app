@@ -1,5 +1,5 @@
 <section class="profile-area">
-    <a routerLink="/" class="profile-icon" *ngFor="let icon of iconList; let i = index" (click)="toggleActive(i)" [ngClass]="{'active': i === activeIndex}">
+    <a class="profile-icon" *ngFor="let icon of iconList; let i = index" (click)="toggleActive(i)" [ngClass]="{'active': i === activeIndex}">
         <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="{{icon.icon}}"></mat-icon>
         <p>{{icon.title}}</p>
     </a>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "erp-app-78e00": {
+      "hosting": {
+        "erp-app": [
+          "erp-app-78e00"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "erp-app-78e00"
+  }
+}

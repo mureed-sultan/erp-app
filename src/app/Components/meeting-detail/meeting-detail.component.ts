@@ -23,9 +23,10 @@ export class MeetingDetailComponent {
 
   settings: TagifySettings = {
     tagTextProp: 'name',
-    skipInvalid: true,
+    // skipInvalid: true,
+    enforceWhitelist:false,
     dropdown: {
-      closeOnSelect: false,
+      closeOnSelect: true,
       enabled: 0,
       classname: 'users-list',
       searchKeys: ['name', 'email'],
@@ -33,21 +34,22 @@ export class MeetingDetailComponent {
     templates: {
       tag(tagData) {
         return `
-            <tag title="${tagData['email']}"
-                  contenteditable='false'
-                  spellcheck='false'
-                  tabIndex="-1"
-                  class="tagify__tag"
-                  ${this.getAttributes(tagData)}>
-              <x title='' class='tagify__tag__removeBtn' role='button' aria-label='remove tag'></x>
-              <div>
-                  <div class='tagify__tag__avatar-wrap'>
-                      <img src="${tagData['avatar']}">
-                  </div>
-                  <span class='tagify__tag-text'>${tagData['name']}</span>
-              </div>
-          </tag>
-          `;
+        <tag title="${tagData['email'] || ''}"
+             contenteditable='false'
+             spellcheck='false'
+             tabIndex="-1"
+             class="tagify__tag"
+             ${this.getAttributes(tagData)}>
+          <x title='' class='tagify__tag__removeBtn' role='button' aria-label='remove tag'></x>
+          <div>
+            <div class='tagify__tag__avatar-wrap'>
+              <img src="${tagData['avatar'] || 'https://i.pravatar.cc/80?img=12'}">
+            </div>
+            <span class='tagify__tag-text'>${tagData['name']}</span>
+          </div>
+        </tag>
+      `;
+      
       },
       dropdownItem(tagData) {
         return `
@@ -100,9 +102,9 @@ export class MeetingDetailComponent {
       if (!name) {
         return 'Missing name';
       }
-      if (!this.validateEmail(email)) {
-        return 'Invalid email';
-      }
+      // if (!this.validateEmail(email)) {
+      //   return 'Invalid email';
+      // }
 
       return true;
     },
@@ -132,6 +134,7 @@ export class MeetingDetailComponent {
         );
       },
     },
+    
     whitelist: [
       {
         value: '1',

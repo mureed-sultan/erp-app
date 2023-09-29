@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/erp-app",
+            "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -27,7 +27,6 @@
             "styles": [
               "src/styles.css",
               "node_modules/ngx-tagify/styles/tagify.scss"
-
             ],
             "scripts": []
           },
@@ -92,6 +91,13 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "erp-app:build:production"
           }
         }
       }

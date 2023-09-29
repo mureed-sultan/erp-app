@@ -134,13 +134,54 @@ form.visitor-detail-form input {
 }
 
 /* Inputs with 50% width will be displayed inline */
-form.visitor-detail-form input:nth-child(3),
-form.visitor-detail-form input:nth-child(8),
+form.visitor-detail-form .input-container:nth-child(3),
+form.visitor-detail-form .input-container:nth-child(8),
 form.visitor-detail-form label {
   /* background-color: red; */
   grid-column: 1 / span 2;
 }
 
+.input-container {
+  position: relative;
+}
+.input-container input {
+  border: 1px solid #d5d8de;
+  border-radius: 5px;
+  padding: 25px 0 18px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  transition-duration: 5s;
+}
+.input-container input:focus-visible {
+  outline-color: var(--purpal);
+}
+.input-container input[type="text"]::placeholder,
+.input-container input[type="number"]::placeholder {
+  font-size: 16px;
+  transform: translateY(0);
+  transition: font-size 0.3s ease-in-out, transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.input-container input[type="text"]:focus::placeholder,
+.input-container input[type="number"]:focus::placeholder {
+  font-size: 12px;
+  transform: translateY(-115%);
+}
+.input-container label {
+  display: none;
+}
+.input-container input[type="text"]:not(:placeholder-shown) + label,
+.input-container input[type="number"]:not(:placeholder-shown) + label {
+  position: absolute;
+  top: 9px;
+  left: 21px;
+  display: block;
+  font-size: 12px;
+  color: #877775;
+  font-family: "Times New Roman", Times, serif;
+}
 @media (max-width:600px) {
     form.visitor-detail-form{
         display: flex;
