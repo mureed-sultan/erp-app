@@ -1,0 +1,27 @@
+<main class="login-container">
+  <div class="login-inner">
+    <div class="company-logo">
+      <img src="{{ logo }}" alt="" />
+    </div>
+    <section class="auth-section">
+        <form (submit)="userAuth()">
+            <div class="input-container">
+                <input type="email" name="username" id="username" placeholder="Username / Email" />
+                <label class="placeholder" for="username">Username / Email</label>
+            </div>
+            <div class="input-container">
+                <input type="password" name="password" id="password" placeholder="Password" />
+                <label class="placeholder" for="username">Password</label>
+
+            </div>
+            <input type="submit" value="Login"/>
+        </form>
+        
+          
+      <button class="forget-password-button">Forget Password ?</button>
+      <div class="company-logo margin-20">
+        <img src="assets/images/VisitTrax 1.png" alt="" />
+      </div>
+    </section>
+  </div>
+</main>

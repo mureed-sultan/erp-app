@@ -1,0 +1,16 @@
+main.metting-page{
+    display: flex;
+    max-width: 95%;
+    margin: auto;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+main.metting-page> :nth-child(2){
+    width: 100%;
+}
+@media (max-width:876px) {
+    main.metting-page{
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,246 @@
+.detail-field {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  gap: 2rem;
+}
+.meeting-details {
+  background-color: white;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.date-and-time-field .input-container {
+  width: auto;
+}
+.date-feilds {
+  align-items: center;
+}
+.icon {
+  color: var(--purpal);
+  overflow: visible;
+}
+.editable-textarea.placeholder::before {
+  content: attr(data-placeholder);
+  color: #999; /* Placeholder text color */
+  font-style: italic;
+  pointer-events: none; /* Prevent interaction with the placeholder */
+}
+
+.input-container, .toolbar {
+  position: relative;
+  width: 100%;
+}
+.toolbar button{
+  background:none;
+  border: none;
+  margin-right: 1rem;
+}.toolbar button .icon{
+color: #A3A3A3;
+}
+.toolbar button.active .icon{
+  color: var(--purpal)
+  }
+.meeting-with select.meet-with {
+  border: 1px solid #d5d8de;
+  border-radius: 5px;
+  padding: 20px 0 20px 10px;
+  width: 20%;
+  box-sizing: border-box;
+  transition-duration: 5s;
+  background-color: white;
+}
+.editor:focus-visible{
+  outline: none;
+}
+.meeting-description{
+  align-items: baseline;
+}
+.button-submit{
+  display: flex;
+  justify-content: end;
+  margin-top: 2rem;
+}
+button.submit{
+  background-color: var(--purpal);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 17px 56px ;
+  border-radius: 10px;
+}
+.editor{
+  min-height: 5rem;
+}
+.toolbar{
+  border: 1px solid #d5d8de;
+  border-radius: 5px;
+  padding: 20px 0 20px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  transition-duration: 5s;
+  background-color: white;
+}
+.input-container input,
+.date-feilds select {
+  border: 1px solid #d5d8de;
+  border-radius: 5px;
+  padding: 20px 0 20px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  transition-duration: 5s;
+  background-color: white;
+}
+.input-container input:focus-visible {
+  outline-color: var(--purpal);
+}
+.input-container input[type="text"]::placeholder {
+  font-size: 16px;
+  transform: translateY(0);
+  transition: font-size 0.3s ease-in-out, transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.input-container input[type="text"]:focus::placeholder {
+  font-size: 12px;
+  transform: translateY(-115%);
+}
+.input-container label {
+  display: none;
+}
+.input-container input[type="text"]:not(:placeholder-shown) + label {
+  position: absolute;
+  top: 10px;
+  left: 11px;
+  display: block;
+  font-size: 12px;
+  color: #877775;
+  font-family: "Times New Roman", Times, serif;
+}
+:host::ng-deep .tagify {
+  --tag-pad: 0.3rem 0.5rem;
+  line-height: normal;
+  font: 14px Arial;
+  width: 100%;
+  background-color: white;
+  padding: 6px 20px;
+  gap: 1rem;
+}
+.tagify-main {
+  width: 100%;
+}
+
+::ng-deep .tagify__dropdown.users-list .tagify__dropdown__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 1em;
+  grid-template-areas:
+    "avatar name"
+    "avatar email";
+}
+
+::ng-deep
+  .tagify__dropdown.users-list
+  .tagify__dropdown__item:hover
+  .tagify__dropdown__item__avatar-wrap {
+  transform: scale(1.2);
+}
+
+::ng-deep .tagify__dropdown.users-list .tagify__dropdown__item__avatar-wrap {
+  grid-area: avatar;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eee;
+  transition: 0.1s ease-out;
+}
+
+::ng-deep .tagify__dropdown.users-list img {
+  width: 100%;
+  vertical-align: top;
+}
+
+::ng-deep .tagify__dropdown.users-list div,
+::ng-deep .tagify__dropdown.users-list strong {
+  grid-area: name;
+  width: 100%;
+  align-self: center;
+}
+
+::ng-deep .tagify__dropdown.users-list span {
+  grid-area: email;
+  width: 100%;
+  font-size: 0.9em;
+  opacity: 0.6;
+}
+
+::ng-deep .tagify__dropdown.users-list .tagify__dropdown__item__addAll {
+  border-bottom: 1px solid #ddd;
+  gap: 0;
+}
+
+/* Tags items */
+:host::ng-deep .tagify__tag {
+  white-space: nowrap;
+  padding: 0;
+  background-color: var(--light-purpal);
+  border-radius: 999999px;
+}
+:host::ng-deep .tagify__tag > div {
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+}
+:host::ng-deep .location-tagify .tagify__tag {
+  /* background-color: rebeccapurple !important; */
+  padding: 5px 10px;
+}
+:host::ng-deep .location-tagify {
+  width: 100%;
+}
+:host::ng-deep .tagify__tag > div .tagify__tag-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #323941;
+}
+:host::ng-deep .tagify__tag > div::before {
+  display: none;
+}
+:host::ng-deep .tagify__tag img {
+  width: 100%;
+  vertical-align: top;
+  pointer-events: none;
+}
+:host::ng-deep .tagify__tag .tagify__tag__avatar-wrap {
+  width: 35px;
+  white-space: normal;
+  border-radius: 50%;
+  background: silver;
+  margin-right: 5px;
+  transition: 0.12s ease-out;
+}
+
+::ng-deep .users-list .tagify__dropdown__itemsGroup:empty {
+  display: none;
+}
+
+::ng-deep .users-list .tagify__dropdown__itemsGroup::before {
+  content: attr(data-title);
+  display: inline-block;
+  font-size: 0.9em;
+  padding: 4px 6px;
+  font-style: italic;
+  border-radius: 4px;
+  background: #00ce8d;
+  color: white;
+  font-weight: 600;
+}
+
+::ng-deep .users-list .tagify__dropdown__itemsGroup:not(:first-of-type) {
+  border-top: 1px solid #ddd;
+}

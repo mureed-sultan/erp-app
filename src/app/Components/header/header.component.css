@@ -1,0 +1,41 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    max-width: 95%;
+    width: 100%;
+    margin: auto;
+    margin-top: 2rem;
+}
+.auth-user{
+    display: flex;
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+}
+.auth-user img{
+    background-color: #fbb040;
+    border-radius: 50%;
+}
+.user-detail p:first-child{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 23px;
+}
+.user-detail p:nth-child(2){
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--purpal);
+}
+header .logo{
+    margin-left: 4rem;
+}
+@media (max-width:400px) {
+     header .logo img{
+        width: 60%;
+     }
+     .auth-user img{
+        width: 25%;
+     }
+}

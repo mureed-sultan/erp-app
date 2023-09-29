@@ -1,0 +1,111 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-inner {
+  background-color: white;
+  max-width: 43.2%;
+  width: 100%;
+  border-radius: 5px;
+}
+.company-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.auth-section {
+  margin: 4.5rem auto 0 auto;
+  width: 74%;
+}
+.auth-section form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+}
+.input-container {
+  position: relative;
+}
+.input-container input {
+  border: 1px solid #d5d8de;
+  border-radius: 5px;
+  padding: 25px 0 18px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  transition-duration: 5s;
+}
+.input-container input:focus-visible {
+  outline-color: var(--purpal);
+}
+.input-container input[type="email"]::placeholder,
+.input-container input[type="password"]::placeholder {
+  font-size: 16px;
+  transform: translateY(0);
+  transition: font-size 0.3s ease-in-out, transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.input-container input[type="email"]:focus::placeholder,
+.input-container input[type="password"]:focus::placeholder {
+  font-size: 12px;
+  transform: translateY(-115%);
+}
+.input-container label {
+  display: none;
+}
+.input-container input[type="email"]:not(:placeholder-shown) + label,
+.input-container input[type="password"]:not(:placeholder-shown) + label {
+  position: absolute;
+  top: 10px;
+  left: 11px;
+  display: block;
+  font-size: 12px;
+  color: #877775;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.auth-section input[type="submit"] {
+  background-color: var(--purpal);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 21px;
+  border-radius: 10px;
+}
+.forget-password-button {
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+  background: none;
+  border: none;
+  margin: auto;
+  width: 100%;
+  margin-top: 2rem;
+}
+.margin-20 {
+  margin-bottom: 3rem;
+}
+@media (max-width:1024px) {
+  .login-inner {
+    /* background-color: red; */
+    max-width: 60%;
+  }
+}
+@media (max-width:640px) {
+  .login-inner {
+    /* background-color: aqua; */
+    max-width: 80%;
+  }
+  .company-logo img {
+    width: 7rem;
+  }
+  .company-logo.margin-20 img {
+    width: 4rem;
+  }
+}

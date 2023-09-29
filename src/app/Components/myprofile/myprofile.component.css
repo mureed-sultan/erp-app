@@ -1,0 +1,32 @@
+section.profile-area {
+  background-color: white;
+  padding: 1em;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.5);
+}
+.profile-icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    gap: 1rem;
+    transition-duration: 500ms;
+}
+.profile-icon .icon {
+  color: black;
+  transition-duration: 500ms
+}
+.profile-icon p {
+  color: black;
+  transition-duration: 500ms
+}
+.profile-icon.active .icon,
+.profile-icon.active p,
+.profile-icon.active{
+    color: var(--purpal);
+    background-color: var(--light-purpal);
+}

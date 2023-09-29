@@ -1,0 +1,47 @@
+section.pending-invitation{
+    background-color: white;
+    max-width: 87%;
+    margin: auto;
+    padding: 3rem 0 28rem 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+section.pending-invitation h4{
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 60px;
+}
+section.pending-invitation h6{
+    font-weight: 700;
+    font-size: 24px;
+    margin: 1rem 0;}
+section.pending-invitation p{
+    font-weight: 400;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+section.pending-invitation p .icon{
+  margin: 0 1rem;
+}
+section.pending-invitation .buttons{
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+section.pending-invitation .buttons button {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 55px;
+  }
+  section.pending-invitation .buttons button:first-child {
+background-color: #C4C4C4;
+color:#666666 ;
+  }
+    section.pending-invitation .buttons button:last-child {
+        background-color: var(--purpal);
+    }

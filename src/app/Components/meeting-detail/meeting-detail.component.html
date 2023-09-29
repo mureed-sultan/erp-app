@@ -1,0 +1,109 @@
+<section class="meeting-details">
+  <div class="title detail-field">
+    <mat-icon class="icon" fontIcon="edit"></mat-icon>
+    <div class="input-container">
+      <input type="text" name="title" id="title" placeholder="Title" />
+      <label class="placeholder" for="title">Title</label>
+    </div>
+  </div>
+  <div class="guest-field detail-field">
+    <mat-icon class="icon" fontIcon="person"></mat-icon>
+
+    <tagify [settings]="settings" class="tagify-main">
+      abatisse2@nih.gov, Justinian Hattersley
+    </tagify>
+  </div>
+  <div class="date-and-time-field detail-field">
+    <mat-icon class="icon" fontIcon="schedule"></mat-icon>
+    <div class="flex date-feilds">
+      <div class="input-container">
+        <input type="date" name="date" id="datestart" placeholder="Date" />
+        <label class="placeholder" for="date">Date</label>
+      </div>
+      <select>
+        <option>2:30 PM</option>
+        <option>1:30 PM</option>
+        <option>2:30 PM</option>
+      </select>
+      <mat-icon class="icon" fontIcon="arrow_forward"></mat-icon>
+      <div class="input-container">
+        <input type="date" name="date" id="dateend" placeholder="Date" />
+        <label class="placeholder" for="date">Date</label>
+      </div>
+      <select>
+        <option>2:30 PM</option>
+        <option>1:30 PM</option>
+        <option>2:30 PM</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="meeting-place detail-field">
+    <mat-icon class="icon" fontIcon="place"></mat-icon>
+    <tagify
+      [settings]="locationSettings"
+      [(ngModel)]="places"
+      class="location-tagify"
+    >
+    </tagify>
+  </div>
+  <div class="facilities detail-field">
+    <mat-icon class="icon" fontIcon="star"></mat-icon>
+    <tagify
+      [settings]="facilitySettings"
+      [(ngModel)]="selectedFacility"
+      class="location-tagify"
+    ></tagify>
+  </div>
+  <div class="meeting-with detail-field">
+    <mat-icon class="icon" fontIcon="group"></mat-icon>
+    <select class="meet-with">
+      <option>Relation with NTN</option>
+      <option>Relation with ABC</option>
+      <option>Relation with ABC</option>
+      <option>Relation with ABC</option>
+    </select>
+  </div>
+  <div class="meeting-description detail-field">
+    <mat-icon class="icon" fontIcon="text_fields"></mat-icon>
+    <div class="toolbar">
+      <button (click)="toggleFormatting('bold')" [class.active]="isBold">
+        <mat-icon class="icon" fontIcon="format_bold"></mat-icon>
+      </button>
+      <button (click)="toggleFormatting('italic')" [class.active]="isItalic">
+        <mat-icon class="icon" fontIcon="format_italic"></mat-icon>
+      </button>
+      <button (click)="toggleFormatting('underline')" [class.active]="isUnderline">
+        <mat-icon class="icon" fontIcon="format_underlined"></mat-icon>
+      </button>
+      <button (click)="toggleAlignment('left')" [class.active]="alignment === 'left'">
+        <mat-icon class="icon" fontIcon="format_align_left"></mat-icon>
+      </button>
+      <button (click)="toggleAlignment('center')" [class.active]="alignment === 'center'">
+        <mat-icon class="icon" fontIcon="format_align_center"></mat-icon>
+      </button>
+      <button (click)="toggleAlignment('right')" [class.active]="alignment === 'right'">
+        <mat-icon class="icon" fontIcon="format_align_right"></mat-icon>
+      </button>
+
+    
+      <div
+        class="editor"
+        contentEditable="true"
+        (input)="onEditorInput($event)"
+      >
+        Type details for new meeting
+      </div>
+    </div>
+  </div>
+  <div class="title detail-field">
+    <mat-icon class="icon" fontIcon="edit_square"></mat-icon>
+    <div class="input-container">
+      <input type="text" name="agenda" id="agenda" placeholder="Agenda" />
+      <label class="placeholder" for="agenda">Agenda</label>
+    </div>
+  </div>
+  <div class="button-submit">
+    <button class="submit">Save</button>
+  </div>
+</section>

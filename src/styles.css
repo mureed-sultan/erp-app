@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* defining some colors  vars */
+:root{
+    --background:#efeff2;
+    --purpal:#AB54DB;
+    --light-purpal:#f1e4f8;
+    --orange:#ff5b5b;
+    --font-use:popping;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: linear-gradient(to bottom, #e5e4eb, #e9eaf0, #cad1d5);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+  }
+  
+/* e5e4eb
+e9eaf0
+cad1d5 */
+.flex{
+    display: flex;
+}
