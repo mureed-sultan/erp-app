@@ -27,6 +27,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NewMeetCalendarComponent } from './Pages/new-meet-calendar/new-meet-calendar.component';
+import { MeetingDeclineComponent } from './Pages/meeting-decline/meeting-decline.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NewMeetCalendarComponent } from './Pages/new-meet-calendar/new-meet-cal
     ResponseSendComponent,
     MeetingConfirmComponent,
     FirebaseComponent,
-    NewMeetCalendarComponent
+    NewMeetCalendarComponent,
+    MeetingDeclineComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,57 @@
+<app-header
+  [logo]="logo"
+  [userLogin]="userLogin"
+  [userImage]="userImage"
+></app-header>
+<section class="pending-invitation">
+  <h4>Meeting with Software Vendor</h4>
+  <h6>16/08/2023</h6>
+  <p>
+    2:30PM <mat-icon class="icon" fontIcon="arrow_forward"></mat-icon> 3:30PM
+    (30 minutes)
+  </p>
+  <p>Venue: NFL Board Room</p>
+  <p>Participants: Ali, Shahid, Azhar</p>
+    <div class="input-container">
+      <input
+        type="text"
+        name="reason-decline"
+        id="reason-decline"
+        placeholder="Reason for declining"
+      />
+      <label class="placeholder" for="reason-decline"
+        >Reason for declining</label
+      >
+    </div>
+    <div class="calender-section">
+      <div>
+        <full-calendar class="decline-calender" [options]="calendarOptions"></full-calendar>
+      </div>
+      <div>
+        <label for="start-time">Start Time</label>
+        <select name="start-time" id="start-time">
+          <option value="2:30PM">2:30PM</option>
+          <option value="3:00PM">3:00PM</option>
+          <option value="3:30PM">3:30PM</option>
+          <option value="4:00PM">4:00PM</option>
+          <option value="4:30PM">4:30PM</option>
+        </select>      
+        <label for="end-time">End Time</label>
+        <select name="end-time" id="end-time">
+          <option value="2:30PM">2:30PM</option>
+          <option value="3:00PM">3:00PM</option>
+          <option value="3:30PM">3:30PM</option>
+          <option value="4:00PM">4:00PM</option>
+          <option value="4:30PM">4:30PM</option>
+        </select>
+      </div>
+    </div>
+    <div class="meeting-detailz">
+      <p>Date:17/08/2023 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time 2:30PM-3:30PM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration 1 Hour</p>
+    </div>
+    <div class="buttons">
+      <button >Cancel</button>
+      <button>Submit</button>
+    </div>
+
+</section>

@@ -6,6 +6,13 @@ import { FirebaseComponent } from './Components/firebase/firebase.component';
 import { ThankyouComponent } from './Pages/thankyou/thankyou.component';
 import { NewMeetCalendarComponent } from './Pages/new-meet-calendar/new-meet-calendar.component';
 import { PendingInviteComponent } from './Pages/pending-invite/pending-invite.component';
+import { MeetingDeclineComponent } from './Pages/meeting-decline/meeting-decline.component';
+import { MeetingConfirmComponent } from './Pages/meeting-confirm/meeting-confirm.component';
+import { ResponseSendComponent } from './Pages/response-send/response-send.component';
+import { VisitorDetailsComponent } from './Pages/visitor-details/visitor-details.component';
+
+
+
 const user = {
   logo:"/assets/images/logo.png",
   userLogin:"Talha Ahmad",
@@ -18,7 +25,11 @@ const routes: Routes = [
   {path:"new-meet-calendar", component:NewMeetCalendarComponent, data: user},
   {path:"thank-you", component:ThankyouComponent, data: user},
   {path:"pending-invite", component:PendingInviteComponent, data: user},
-  {path:"test", component:FirebaseComponent},
+  {path:"meeting-decline", component:MeetingDeclineComponent, data: user},
+  {path:"meeting-confirm", component:MeetingConfirmComponent, data: user},
+  {path:"response-sent", component:ResponseSendComponent, data: user},
+  {path:"visitor-details", component:VisitorDetailsComponent, data: user},
+  // {path:"test", component:FirebaseComponent},
 ];
 
 @NgModule({

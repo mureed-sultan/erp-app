@@ -325,7 +325,7 @@ export class MeetingDetailComponent {
     for (let i = 0; i < this.facilityArray.length - 1; i++) {
       facilityData += this.facilityArray[i]['value'] + ' || ';
     }
-    this.router.navigate(['pending-invite']);
+    // this.router.navigate(['pending-invite']);
 
     try {
       const missingFields = [];

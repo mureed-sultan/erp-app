@@ -53,28 +53,61 @@ cad1d5 */
   white-space: normal;
 }
 
-.fc-theme-standard td, .fc-theme-standard th, .fc-scrollgrid.fc-scrollgrid-liquid {
-    border:none
+.fc-theme-standard td,
+.fc-theme-standard th,
+.fc-scrollgrid.fc-scrollgrid-liquid {
+  border: none;
 }
 .fc-theme-standard .fc-scrollgrid-sync-table td {
-    border: 3px solid #eceaf3;
-  }
-  .fc .fc-scrollgrid table.fc-scrollgrid-sync-table{
-    border-style: solid;
-  }
-  table.fc-col-header .fc-col-header-cell.fc-day{
-    font-size: 16px;
-    font-weight: 400;
-    color: #464255;
-  }  table.fc-col-header{
-    margin:2rem 0 1rem 0;
-  }
-  button.fc-myCustomButton-button{
-    background-color: var(--purpal) !important;
-    border: none !important;
-    color: white !important;
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    padding:15px 34px !important;
-    border-radius: 10px !important;
-  }
+  border: 3px solid #eceaf3;
+}
+.fc .fc-scrollgrid table.fc-scrollgrid-sync-table {
+  border: 1px solid;
+}
+table.fc-col-header .fc-col-header-cell.fc-day {
+  font-size: 16px;
+  font-weight: 400;
+  color: #464255;
+}
+table.fc-col-header {
+  margin: 2rem 0 1rem 0;
+}
+button.fc-myCustomButton-button {
+  background-color: var(--purpal) !important;
+  border: none !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 15px 34px !important;
+  border-radius: 10px !important;
+}
+.decline-calender tbody table .fc-daygrid-day-events {
+  background-color: rebeccapurple !important;
+  display: none;
+}
+.decline-calender tbody table .fc-daygrid-day-top {
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.decline-calender .fc-toolbar-title {
+font-weight: 400;
+font-size: 20px;
+color: var(--purpal);
+}
+.decline-calender .fc-header-toolbar.fc-toolbar button span,
+.decline-calender .fc-header-toolbar.fc-toolbar button  {
+color:black;
+border:   none;
+background:none;
+}
+
+.decline-calender tbody table td, .decline-calender tbody table{
+  border: none !important;
+}
+.fc .fc-scrollgrid table.fc-scrollgrid-sync-table {
+  border: 1px solid;
+}
