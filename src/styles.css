@@ -31,7 +31,19 @@ cad1d5 */
   display: flex;
 }
 .calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) button {
-  /* border: none; */
+  border: none;
+  background: none;
+}.calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) button:focus-visible,
+.calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) button:focus  {
+  outline: none;
+  box-shadow: none;
+}
+.calendar
+  .fc-header-toolbar.fc-toolbar
+  .fc-toolbar-chunk:nth-child(2)
+  button
+  span {
+  color: var(--purpal);
   background: none;
 }
 .calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) h2 {
@@ -94,18 +106,19 @@ button.fc-myCustomButton-button {
   align-items: center;
 }
 .decline-calender .fc-toolbar-title {
-font-weight: 400;
-font-size: 20px;
-color: var(--purpal);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--purpal);
 }
 .decline-calender .fc-header-toolbar.fc-toolbar button span,
-.decline-calender .fc-header-toolbar.fc-toolbar button  {
-color:black;
-border:   none;
-background:none;
+.decline-calender .fc-header-toolbar.fc-toolbar button {
+  color: black;
+  border: none;
+  background: none;
 }
 
-.decline-calender tbody table td, .decline-calender tbody table{
+.decline-calender tbody table td,
+.decline-calender tbody table {
   border: none !important;
 }
 .fc .fc-scrollgrid table.fc-scrollgrid-sync-table {

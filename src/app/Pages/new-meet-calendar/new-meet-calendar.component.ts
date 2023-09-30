@@ -47,7 +47,7 @@ export class NewMeetCalendarComponent {
       return { html: `<div class="fc-event-title">${arg.event.title}</div>` };
     },
     headerToolbar: {
-      start: '', // will normally be on the left. if RTL, will be on the right
+      start: '',
       center: 'prev title next',
       end: 'myCustomButton',
     },
