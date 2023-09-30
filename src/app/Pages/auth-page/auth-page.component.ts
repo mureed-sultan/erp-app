@@ -30,7 +30,7 @@ export class AuthPageComponent{
     .then((userCredential: UserCredential) => {
       const user = userCredential.user;
       console.log('User is authorized:', user);
-      this.router.navigate(['new-meeting-details']);
+      this.router.navigate(['new-meet-calendar']);
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -2,14 +2,16 @@
   <div class="title detail-field">
     <mat-icon class="icon" fontIcon="edit"></mat-icon>
     <div class="input-container">
-      <input type="text" name="title" id="title" placeholder="Title" />
+      <input type="text" name="title" id="title" placeholder="Title" [(ngModel)]="title" />
       <label class="placeholder" for="title">Title</label>
     </div>
   </div>
   <div class="guest-field detail-field">
     <mat-icon class="icon" fontIcon="person"></mat-icon>
 
-    <tagify [settings]="settings" class="tagify-main">
+    <tagify [settings]="settings" class="tagify-main" [(ngModel)]="guestArray"
+    (ngModelChange)="addingGuest($event)"
+    >
       abatisse2@nih.gov, Justinian Hattersley
     </tagify>
   </div>
@@ -17,20 +19,20 @@
     <mat-icon class="icon" fontIcon="schedule"></mat-icon>
     <div class="flex date-feilds">
       <div class="input-container">
-        <input type="date" name="date" id="datestart" placeholder="Date" />
+        <input type="date" name="date" id="datestart" placeholder="Date" [(ngModel)]="dateStart"/>
         <label class="placeholder" for="date">Date</label>
       </div>
-      <select>
+      <select [(ngModel)]="startTime">
         <option>2:30 PM</option>
         <option>1:30 PM</option>
         <option>2:30 PM</option>
       </select>
       <mat-icon class="icon" fontIcon="arrow_forward"></mat-icon>
       <div class="input-container">
-        <input type="date" name="date" id="dateend" placeholder="Date" />
+        <input type="date" name="date" id="dateend" placeholder="Date" [(ngModel)]="dateEnd"/>
         <label class="placeholder" for="date">Date</label>
       </div>
-      <select>
+      <select [(ngModel)]="endTime">
         <option>2:30 PM</option>
         <option>1:30 PM</option>
         <option>2:30 PM</option>
@@ -44,6 +46,8 @@
       [settings]="locationSettings"
       [(ngModel)]="places"
       class="location-tagify"
+      (ngModelChange)="onPlacesChange($event)"
+
     >
     </tagify>
   </div>
@@ -51,13 +55,14 @@
     <mat-icon class="icon" fontIcon="star"></mat-icon>
     <tagify
       [settings]="facilitySettings"
-      [(ngModel)]="selectedFacility"
+      [(ngModel)]="facilityArray"
       class="location-tagify"
+    (ngModelChange)="addingFacilities($event)"
     ></tagify>
   </div>
   <div class="meeting-with detail-field">
     <mat-icon class="icon" fontIcon="group"></mat-icon>
-    <select class="meet-with">
+    <select class="meet-with" [(ngModel)]="selectedMeetWith">
       <option>Relation with NTN</option>
       <option>Relation with ABC</option>
       <option>Relation with ABC</option>
@@ -73,20 +78,30 @@
       <button (click)="toggleFormatting('italic')" [class.active]="isItalic">
         <mat-icon class="icon" fontIcon="format_italic"></mat-icon>
       </button>
-      <button (click)="toggleFormatting('underline')" [class.active]="isUnderline">
+      <button
+        (click)="toggleFormatting('underline')"
+        [class.active]="isUnderline"
+      >
         <mat-icon class="icon" fontIcon="format_underlined"></mat-icon>
       </button>
-      <button (click)="toggleAlignment('left')" [class.active]="alignment === 'left'">
+      <button
+        (click)="toggleAlignment('left')"
+        [class.active]="alignment === 'left'"
+      >
         <mat-icon class="icon" fontIcon="format_align_left"></mat-icon>
       </button>
-      <button (click)="toggleAlignment('center')" [class.active]="alignment === 'center'">
+      <button
+        (click)="toggleAlignment('center')"
+        [class.active]="alignment === 'center'"
+      >
         <mat-icon class="icon" fontIcon="format_align_center"></mat-icon>
       </button>
-      <button (click)="toggleAlignment('right')" [class.active]="alignment === 'right'">
+      <button
+        (click)="toggleAlignment('right')"
+        [class.active]="alignment === 'right'"
+      >
         <mat-icon class="icon" fontIcon="format_align_right"></mat-icon>
       </button>
-
-    
       <div
         class="editor"
         contentEditable="true"
@@ -99,11 +114,11 @@
   <div class="title detail-field">
     <mat-icon class="icon" fontIcon="edit_square"></mat-icon>
     <div class="input-container">
-      <input type="text" name="agenda" id="agenda" placeholder="Agenda" />
+      <input type="text" name="agenda" id="agenda" placeholder="Agenda" [(ngModel)]="agenda" />
       <label class="placeholder" for="agenda">Agenda</label>
     </div>
   </div>
   <div class="button-submit">
-    <button class="submit">Save</button>
+    <button  (click)="saveMeetingDetails()" class="submit">Save</button>
   </div>
 </section>

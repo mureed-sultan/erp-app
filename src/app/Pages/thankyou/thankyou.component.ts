@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-thankyou',
@@ -6,8 +7,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./thankyou.component.css']
 })
 export class ThankyouComponent {
-  @Input() logo: string | undefined;
-  @Input() userLogin: string | undefined;
-  @Input() userImage: string | undefined;
+  logo: string | undefined;
+  userLogin: string | undefined;
+  userImage: string | undefined;
+  constructor(private route: ActivatedRoute) {
+
+  }
+
+  ngOnInit(): void {
+    this.logo = this.route.snapshot.data['logo'];
+    this.userLogin = this.route.snapshot.data['userLogin'];
+    this.userImage = this.route.snapshot.data['userImage'];
+  }
 
 }

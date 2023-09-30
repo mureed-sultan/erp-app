@@ -1,0 +1,12 @@
+/* Custom CSS to wrap event titles */
+.fc-event-title {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .fc-daygrid-dot-event .fc-event-title{
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  

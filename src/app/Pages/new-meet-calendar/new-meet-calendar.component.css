@@ -1,0 +1,24 @@
+main.metting-page {
+  display: flex;
+  max-width: 95%;
+  margin: auto;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+main.metting-page > :nth-child(2) {
+  width: 100%;
+}
+@media (max-width: 876px) {
+  main.metting-page {
+    flex-direction: column;
+  }
+}
+.calendar {
+  background-color: white;
+  border-radius: 10px;
+  width: 97%;
+  margin: auto;
+  padding: 3rem 1rem;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.5);
+
+}

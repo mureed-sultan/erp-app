@@ -1,29 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* defining some colors  vars */
-:root{
-    --background:#efeff2;
-    --purpal:#AB54DB;
-    --light-purpal:#f1e4f8;
-    --orange:#ff5b5b;
-    --font-use:popping;
+:root {
+  --background: #efeff2;
+  --purpal: #ab54db;
+  --light-purpal: #f1e4f8;
+  --orange: #ff5b5b;
+  --font-use: popping;
 }
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 body {
-    background: linear-gradient(to bottom, #e5e4eb, #e9eaf0, #cad1d5);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-  }
-  
+  background: linear-gradient(to bottom, #e5e4eb, #e9eaf0, #cad1d5);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
 /* e5e4eb
 e9eaf0
 cad1d5 */
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
+.calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) {
+  display: flex;
+}
+.calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) button {
+  /* border: none; */
+  background: none;
+}
+.calendar .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:nth-child(2) h2 {
+  font-weight: 600;
+  font-size: 32px;
+  color: #464255;
+}
+
+.fc .fc-daygrid-day-top {
+  flex-direction: column;
+  padding: 1rem 0 0 1rem;
+}
+.fc-daygrid-day-events .fc-event-title {
+  background-color: var(--orange);
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: white;
+  white-space: normal;
+}
+
+.fc-theme-standard td, .fc-theme-standard th, .fc-scrollgrid.fc-scrollgrid-liquid {
+    border:none
+}
+.fc-theme-standard .fc-scrollgrid-sync-table td {
+    border: 3px solid #eceaf3;
+  }
+  .fc .fc-scrollgrid table.fc-scrollgrid-sync-table{
+    border-style: solid;
+  }
+  table.fc-col-header .fc-col-header-cell.fc-day{
+    font-size: 16px;
+    font-weight: 400;
+    color: #464255;
+  }  table.fc-col-header{
+    margin:2rem 0 1rem 0;
+  }
+  button.fc-myCustomButton-button{
+    background-color: var(--purpal) !important;
+    border: none !important;
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    padding:15px 34px !important;
+    border-radius: 10px !important;
+  }

@@ -1,30 +1,42 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { TagData, TagifySettings } from 'ngx-tagify';
-import { startWith, map } from 'rxjs/operators';
+import { getFirestore, addDoc, collection, getDocs } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
+const app = initializeApp(environment.firebase);
+import { Router } from '@angular/router';
 
-interface UserTag {
-  value: string;
-  name: string;
-  avatar: string;
-  email: string;
-  team: string;
-}
 
+
+const db = getFirestore(app);
 @Component({
   selector: 'app-meeting-detail',
   templateUrl: './meeting-detail.component.html',
   styleUrls: ['./meeting-detail.component.css'],
 })
 export class MeetingDetailComponent {
-  selectedFacility: string = '';
+  @ViewChild('editor') editor!: ElementRef;
+  alignment: string = 'left';
+  isBold: boolean = false;
+  isItalic: boolean = false;
+  isUnderline: boolean = false;
+  title: string = '';
+  dateStart: string = '';
+  dateEnd: string = '';
+  agenda: string = '';
+  textContent: string = '';
+  startTime: string = '';
+  endTime: string = '';
+  selectedMeetWith: string = '';
+  guestArray: TagData[] = [];
+  facilityArray: TagData[] = [];
 
+  constructor( private router: Router) {
+    // console.log("Say hello", this.logo);
+  }
   settings: TagifySettings = {
     tagTextProp: 'name',
-    // skipInvalid: true,
-    enforceWhitelist:false,
+    enforceWhitelist: false,
     dropdown: {
       closeOnSelect: true,
       enabled: 0,
@@ -43,13 +55,14 @@ export class MeetingDetailComponent {
           <x title='' class='tagify__tag__removeBtn' role='button' aria-label='remove tag'></x>
           <div>
             <div class='tagify__tag__avatar-wrap'>
-              <img src="${tagData['avatar'] || 'https://i.pravatar.cc/80?img=12'}">
+              <img src="${
+                tagData['avatar'] || 'https://i.pravatar.cc/80?img=12'
+              }">
             </div>
             <span class='tagify__tag-text'>${tagData['name']}</span>
           </div>
         </tag>
       `;
-      
       },
       dropdownItem(tagData) {
         return `
@@ -110,7 +123,7 @@ export class MeetingDetailComponent {
     },
     callbacks: {
       'dropdown:show': (event) => {
-        console.log(event);
+        // console.log(event);
       },
       'dropdown:select': (event) => {
         const tagify = event.detail.tagify;
@@ -134,7 +147,7 @@ export class MeetingDetailComponent {
         );
       },
     },
-    
+
     whitelist: [
       {
         value: '1',
@@ -222,10 +235,7 @@ export class MeetingDetailComponent {
       },
     ],
   };
-
-  private validateEmail(email: string) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
+  facilityData: any;
 
   private parseFullValue(value: string) {
     const parts = value.split(/<(.*?)>/g);
@@ -241,25 +251,29 @@ export class MeetingDetailComponent {
     maxTags: 1,
     callbacks: {
       click: (e) => {
-        console.log(e.detail);
+        // console.log(e.detail);
       },
     },
   };
 
   facilitySettings: TagifySettings = {
-    enforceWhitelist: false, 
+    enforceWhitelist: false,
     whitelist: ['Projector', 'Car Parking', 'Food', 'Music System', 'Internet'],
     dropdown: {
-      enabled: 1, 
+      enabled: 1,
     },
   };
 
-  @ViewChild('editor') editor!: ElementRef;
-  alignment: string = 'left'; // Default alignment
-  isBold: boolean = false;
-  isItalic: boolean = false;
-  isUnderline: boolean = false;
 
+  onPlacesChange(places: TagData[]) {
+    this.places = places;
+  }
+  addingGuest(guest: TagData) {
+    this.guestArray.push(guest);
+  }
+  addingFacilities(facility: TagData) {
+    this.facilityArray.push(facility);
+  }
   toggleAlignment(align: string) {
     // Update the alignment variable when a button is clicked
     this.alignment = align;
@@ -268,7 +282,7 @@ export class MeetingDetailComponent {
   toggleFormatting(command: string) {
     // Execute the command
     document.execCommand(command, false, '');
-  
+
     // Update the formatting state variables based on the command
     if (command === 'bold') {
       this.isBold = !this.isBold;
@@ -277,29 +291,84 @@ export class MeetingDetailComponent {
     } else if (command === 'underline') {
       this.isUnderline = !this.isUnderline;
     }
-  
-   console.log(command)
+
     this.updateButtonActiveState(command);
   }
-  
+
   updateButtonActiveState(command: string) {
-    // Update the active state of the buttons based on the formatting state
     if (command === 'bold') {
       this.isBold = document.queryCommandState(command);
     } else if (command === 'italic') {
       this.isItalic = document.queryCommandState(command);
     } else if (command === 'underline') {
       this.isUnderline = document.queryCommandState(command);
-    }}
+    }
+  }
   onEditorInput(event: any) {
-    const content = event.target.innerText;
-    console.log('Content:', content);
+    this.textContent = event.target.innerText;
   }
   isFormattingActive(command: string): boolean {
-    // Check if the given formatting is currently active
-    console.log(command)
     return document.queryCommandState(command);
   }
-  
-}
+  async saveMeetingDetails() {
+    const title = this.title;
+    const dateStart = this.dateStart;
+    const dateEnd = this.dateEnd;
+    const agenda = this.agenda;
 
+    let guestList = '';
+    let facilityData = '';
+    const meetWith = this.selectedMeetWith;
+    for (let i = 0; i < this.guestArray.length - 1; i++) {
+      guestList += this.guestArray[i]['name'] + ' || ';
+    }
+    for (let i = 0; i < this.facilityArray.length - 1; i++) {
+      facilityData += this.facilityArray[i]['value'] + ' || ';
+    }
+    this.router.navigate(['pending-invite']);
+
+    try {
+      const missingFields = [];
+      if (!guestList) missingFields.push('Guest List');
+      if (!agenda) missingFields.push('Agenda');
+      if (!this.places) missingFields.push('Location');
+      if (!dateStart) missingFields.push('Start Date');
+      if (!dateEnd) missingFields.push('End Date');
+      if (!this.textContent) missingFields.push('Context');
+      if (!facilityData) missingFields.push('Facilities');
+      if (!meetWith) missingFields.push('Meet With');
+      if (!title) missingFields.push('Title');
+      if (!this.startTime) missingFields.push('Start Time');
+      if (!this.endTime) missingFields.push('End Time');
+
+      if (missingFields.length > 0) {
+        const missingFieldsList = missingFields.join(', ');
+        alert(`Missing fields: ${missingFieldsList}`);
+      } else {
+        const docRef = await addDoc(collection(db, '/new-meeting'), {
+          guestList: guestList,
+          Agenda: agenda,
+          location: this.places,
+          DateStart: dateStart,
+          DateEnd: dateEnd,
+          context: this.textContent,
+          facilities: facilityData,
+          meetwith: meetWith,
+          Title: title,
+          timeStart: this.startTime,
+          timeEnd: this.endTime,
+        });
+
+        // console.log('Document added to Firestore with ID: ', docRef.id);
+        this.router.navigate(['pending-invite']);
+      }
+    } catch (error) {
+      console.error('Error adding document to Firestore:', error);
+    }
+
+    const querySnapshot = await getDocs(collection(db, '/new-meeting'));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${JSON.stringify(doc.data())}}`);
+    });
+  }
+}

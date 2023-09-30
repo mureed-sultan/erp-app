@@ -9,7 +9,7 @@ header{
 .auth-user{
     display: flex;
     width: 50%;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
 }

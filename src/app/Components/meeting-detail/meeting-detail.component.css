@@ -60,7 +60,7 @@ color: #A3A3A3;
 }
 .button-submit{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 2rem;
 }
 button.submit{
